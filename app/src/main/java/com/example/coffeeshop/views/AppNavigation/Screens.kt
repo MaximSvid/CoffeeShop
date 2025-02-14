@@ -6,3 +6,4 @@ sealed class Screens (val screens: String) {
     data object FavoriteView: Screens("favorite")
     data object SettingsView: Screens("settings")
 }
+
