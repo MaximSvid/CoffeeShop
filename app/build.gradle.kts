@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.example.coffeeshop"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.coffeeshop"
@@ -66,4 +66,12 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+
+    //material design 3
+    implementation("androidx.compose.material3:material3:1.0.0-alpha12")
+    implementation("androidx.compose.material3:material3-window-size-class:1.0.0-alpha12")
+
+    //navigation
+    implementation ("androidx.navigation:navigation-compose:2.8.7")
 }
