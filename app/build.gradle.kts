@@ -1,6 +1,9 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+
+//    id("com.google.devtools.ksp") // Use KSP instead of kapt
+//    id("dagger.hilt.android.plugin") // Apply Hilt plugin
 }
 
 android {
@@ -83,4 +86,8 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
     implementation("com.squareup.moshi:moshi-kotlin:1.15.0")
+
+    //dagger.hilt
+    implementation("com.google.dagger:hilt-android:2.40.5")
+//    ksp("com.google.dagger:hilt-compiler:2.40.5")
 }
