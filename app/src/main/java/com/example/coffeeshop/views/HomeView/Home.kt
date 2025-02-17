@@ -45,6 +45,7 @@ fun Home(
 ) {
     val products by viewModel.products.collectAsState(emptyList())
 
+
     LazyColumn(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -62,38 +63,24 @@ fun Home(
         item {
             LazyVerticalGrid(
                 columns = GridCells.Fixed(2),
-                contentPadding = PaddingValues(8.dp),
+                contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
+                verticalArrangement = Arrangement.spacedBy(12.dp),
+                horizontalArrangement = Arrangement.spacedBy(12.dp),
                 modifier = Modifier.height(300.dp) // Фиксированная высота для сетки
             ) {
                 items(products) { product ->
                     ProductCard(
-                        painter = painterResource(id = product.imageUrl.toDrawableResource()),
+                        imageUrl = product.imageUrl,
                         contentDescription = product.description,
                         title = product.name,
-                        roastLevel = product.roastLevel,
-                        price = product.price,
+                        roastLevel = product.roastLevel.toString(),
+                        price = product.price.toString(),
                         onLikeClick = { /*TODO*/ },
                         modifier = Modifier
                     )
+
                 }
             }
         }
     }
 }
-
-fun String.toDrawableResource(): Int {
-    return when(this) {
-        "coffee1" -> R.drawable.coffee1
-        "coffee2" -> R.drawable.coffee2
-        else -> R.drawable.coffee1 // дефолтное изображение
-    }
-}
-
-//
-//@Preview
-//@Composable
-//fun ImageSliderPreview() {
-//    CoffeeShopTheme {
-//        Home()
-//    }
-//}

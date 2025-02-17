@@ -113,4 +113,7 @@ dependencies {
 
     implementation("androidx.core:core:1.12.0")
     implementation("androidx.core:core-ktx:1.12.0")
+
+    //coli image
+    implementation("io.coil-kt:coil-compose:2.3.0")
 }
