@@ -1,9 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-
-//    id("com.google.devtools.ksp") // Use KSP instead of kapt
-//    id("dagger.hilt.android.plugin") // Apply Hilt plugin
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.hilt)
 }
 
 android {
@@ -43,14 +42,17 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = "1.5.14"
     }
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+
 }
+
+
 
 dependencies {
 
@@ -88,6 +90,6 @@ dependencies {
     implementation("com.squareup.moshi:moshi-kotlin:1.15.0")
 
     //dagger.hilt
-    implementation("com.google.dagger:hilt-android:2.40.5")
-//    ksp("com.google.dagger:hilt-compiler:2.40.5")
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.compiler)
 }
