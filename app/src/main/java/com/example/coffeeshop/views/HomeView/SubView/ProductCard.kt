@@ -139,22 +139,22 @@ fun ProductCard (
     }
 }
 
-@Preview
-@Composable
-fun ProductCardPreview () {
-
-    val painter = painterResource(id = R.drawable.coffee2)
-    val description = "Test description"
-    val title = "Test title"
-    val roastLevel = 3
-    val price = 12.99
-    ProductCard(
-        painter = painter,
-        contentDescription = description,
-        title = title,
-        roastLevel = roastLevel,
-        price = price,
-        onLikeClick = { /*TODO*/ },
-        modifier = Modifier
-    )
-}
+//@Preview
+//@Composable
+//fun ProductCardPreview () {
+//
+//    val painter = painterResource(id = R.drawable.coffee2)
+//    val description = "Test description"
+//    val title = "Test title"
+//    val roastLevel = 3
+//    val price = 12.99
+//    ProductCard(
+//        painter = painter,
+//        contentDescription = description,
+//        title = title,
+//        roastLevel = roastLevel,
+//        price = price,
+//        onLikeClick = { /*TODO*/ },
+//        modifier = Modifier
+//    )
+//}

@@ -5,6 +5,15 @@ plugins {
     alias(libs.plugins.hilt)
 }
 
+hilt {
+    enableAggregatingTask = false
+}
+
+ksp {
+    arg("compose-compiler-kotlin", "enableKspPreview=true")
+    arg("compose-compiler-kotlin", "skipMetadataVersionCheck=true")
+}
+
 android {
     namespace = "com.example.coffeeshop"
     compileSdk = 35
@@ -32,12 +41,13 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
+
     buildFeatures {
         compose = true
     }
@@ -74,11 +84,11 @@ dependencies {
 
 
     //material design 3
-    implementation("androidx.compose.material3:material3:1.0.0-alpha12")
-    implementation("androidx.compose.material3:material3-window-size-class:1.0.0-alpha12")
+    implementation("androidx.compose.material3:material3:1.2.1")
+    implementation("androidx.compose.material3:material3-window-size-class:1.2.1")
 
     //navigation
-    implementation ("androidx.navigation:navigation-compose:2.8.7")
+    implementation ("androidx.navigation:navigation-compose:2.7.7")
 
     //image slider (accompanist)
     implementation ("com.google.accompanist:accompanist-pager:0.28.0")
@@ -92,4 +102,15 @@ dependencies {
     //dagger.hilt
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
+//    implementation ("androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03")
+
+    // Для ViewModel
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
+    implementation ("androidx.lifecycle:lifecycle-runtime-compose:2.7.0")
+
+    //navigation
+    implementation ("androidx.hilt:hilt-navigation-compose:1.1.0")
+
+    implementation("androidx.core:core:1.12.0")
+    implementation("androidx.core:core-ktx:1.12.0")
 }
