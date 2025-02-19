@@ -104,7 +104,7 @@ fun MyBottomAppBar() {
             modifier = Modifier.padding(paddingValues)
         )
         {
-            composable(Screens.HomeView.screens) { Home() }
+            composable(Screens.HomeView.screens) { Home(navController = navigationController) }
             composable(Screens.CartView.screens) { Cart() }
             composable(Screens.FavoriteView.screens) { Favorite() }
             composable(Screens.SettingsView.screens) { Settings() }
