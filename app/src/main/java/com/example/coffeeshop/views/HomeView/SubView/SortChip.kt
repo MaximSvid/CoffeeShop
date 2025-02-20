@@ -19,6 +19,6 @@ fun SortChip(
         selected = selected,
         onClick = onClick,
         label = { Text(label) },
-        modifier = Modifier.height(22.dp)
+        modifier = Modifier.height(28.dp)
     )
 }

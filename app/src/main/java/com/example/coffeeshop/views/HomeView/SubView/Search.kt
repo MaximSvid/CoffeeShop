@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
@@ -13,6 +14,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.SearchBar
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.coffeeshop.data.enumClass.SortType
@@ -27,7 +29,9 @@ fun Search(
 ) {
     Column(modifier = modifier) {
         SearchBar(
-            modifier = modifier.fillMaxWidth(),
+            modifier = modifier
+                .fillMaxWidth()
+                .heightIn(max = 60.dp), //um Fehler yu beheben wegen size
             query = state.searchText,
             onQueryChange = { onStateChange(state.copy(searchText = it)) },
             onSearch = { onStateChange(state.copy(active = false)) },
@@ -52,30 +56,31 @@ fun Search(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(top = 8.dp),
-            horizontalArrangement = Arrangement.spacedBy(8.dp)
+            horizontalArrangement = Arrangement.SpaceEvenly,
+            verticalAlignment = Alignment.CenterVertically
         ){
             SortChip(
                 selected = state.sortType == SortType.NAME_ASC,
                 onClick = { onStateChange(state.copy(sortType = SortType.NAME_ASC)) },
-                label = "Name ^"
+                label = "Name ↑"
             )
 
             SortChip(
                 selected = state.sortType == SortType.NAME_DESC,
                 onClick = { onStateChange(state.copy(sortType = SortType.NAME_DESC)) },
-                label = "Name -"
+                label = "Name ↓"
             )
 
             SortChip(
                 selected = state.sortType == SortType.PRICE_ASC,
                 onClick = { onStateChange(state.copy(sortType = SortType.PRICE_ASC)) },
-                label = "Price ^"
+                label = "Price ↑"
             )
 
             SortChip(
                 selected = state.sortType == SortType.PRICE_DESC,
                 onClick = { onStateChange(state.copy(sortType = SortType.PRICE_DESC)) },
-                label = "Price -"
+                label = "Price ↓"
             )
         }
     }
