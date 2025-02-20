@@ -31,19 +31,27 @@ fun Home(
 ) {
     val products by viewModel.products.collectAsState(emptyList())
     val searchState by viewModel.searchState.collectAsState()
-
-    Column (modifier = Modifier.fillMaxSize()){
-        Search(state = searchState, onStateChange = viewModel::updateSearchState,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 16.dp, vertical = 8.dp)
-            )
-    }
+//
+//    Column (modifier = Modifier.fillMaxSize()){
+//        Search(state = searchState, onStateChange = viewModel::updateSearchState,
+//            modifier = Modifier
+//                .fillMaxWidth()
+//                .padding(horizontal = 16.dp, vertical = 8.dp)
+//            )
+//    }
 
     LazyColumn(
         modifier = Modifier.fillMaxSize()
 //        Spacer
     ) {
+
+        item {
+            Search(state = searchState, onStateChange = viewModel::updateSearchState,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp, vertical = 8.dp)
+            )
+        }
 
         // Слайдер как отдельный item
         item {

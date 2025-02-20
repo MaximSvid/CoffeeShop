@@ -15,6 +15,7 @@ import androidx.compose.material3.SearchBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.example.coffeeshop.data.enumClass.SortType
 import com.example.coffeeshop.data.model.SearchState
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -53,7 +54,29 @@ fun Search(
                 .padding(top = 8.dp),
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ){
+            SortChip(
+                selected = state.sortType == SortType.NAME_ASC,
+                onClick = { onStateChange(state.copy(sortType = SortType.NAME_ASC)) },
+                label = "Name ^"
+            )
 
+            SortChip(
+                selected = state.sortType == SortType.NAME_DESC,
+                onClick = { onStateChange(state.copy(sortType = SortType.NAME_DESC)) },
+                label = "Name -"
+            )
+
+            SortChip(
+                selected = state.sortType == SortType.PRICE_ASC,
+                onClick = { onStateChange(state.copy(sortType = SortType.PRICE_ASC)) },
+                label = "Price ^"
+            )
+
+            SortChip(
+                selected = state.sortType == SortType.PRICE_DESC,
+                onClick = { onStateChange(state.copy(sortType = SortType.PRICE_DESC)) },
+                label = "Price -"
+            )
         }
     }
 }

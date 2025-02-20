@@ -1,8 +1,8 @@
 package com.example.coffeeshop.data.enumClass
 
 enum class SortType {
-    NAME_ASC,
-    NAME_DESC,
-    PRICE_ASC,
-    PRICE_DESC
+    NAME_ASC, // sort a-z
+    NAME_DESC, // sort z-a
+    PRICE_ASC, // sort + price
+    PRICE_DESC // sort  - price
 }
