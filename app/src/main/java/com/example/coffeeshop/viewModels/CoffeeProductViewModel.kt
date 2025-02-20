@@ -4,7 +4,9 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import com.example.coffeeshop.data.enumClass.SortType
 import com.example.coffeeshop.data.model.Product
+import com.example.coffeeshop.data.model.SearchState
 import com.example.coffeeshop.repositories.CoffeeApiRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -36,5 +38,37 @@ class CoffeeProductViewModel @Inject constructor(
         } catch (e: Exception) {
             Log.e("CoffeeProductViewModel", "Error fetching products", e)
         }
+    }
+
+    private val _searchState = MutableStateFlow(SearchState())
+    val searchState = _searchState.asStateFlow()
+
+    fun updateSearchState(newState: SearchState) {
+        _searchState.value = newState
+        viewModelScope.launch {
+            try {
+                val originalProducts = repository.getAllProducts()
+                filterProducts(originalProducts)
+            } catch (e: Exception) {
+                Log.e("CoffeeProductViewModel", "Error updating search state", e)
+            }
+        }
+    }
+
+    private fun filterProducts(originalProducts: List<Product>) {
+        val filtered = originalProducts
+            .filter { product ->
+                product.name.contains(searchState.value.searchText, ignoreCase = true) ||
+                        product.description.contains(searchState.value.searchText, ignoreCase = true)
+            }
+            .let { filteredList ->
+                when (searchState.value.sortType) {
+                    SortType.NAME_ASC -> filteredList.sortedBy { it.name }
+                    SortType.NAME_DESC -> filteredList.sortedByDescending { it.name }
+                    SortType.PRICE_ASC -> filteredList.sortedBy { it.price }
+                    SortType.PRICE_DESC -> filteredList.sortedByDescending { it.price }
+                }
+            }
+        _products.value = filtered
     }
 }
