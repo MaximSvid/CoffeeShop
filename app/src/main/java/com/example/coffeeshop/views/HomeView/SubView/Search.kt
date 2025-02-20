@@ -31,7 +31,7 @@ fun Search(
         SearchBar(
             modifier = modifier
                 .fillMaxWidth()
-                .heightIn(max = 60.dp), //um Fehler yu beheben wegen size
+                .heightIn(max = 80.dp), //fehler...
             query = state.searchText,
             onQueryChange = { onStateChange(state.copy(searchText = it)) },
             onSearch = { onStateChange(state.copy(active = false)) },
