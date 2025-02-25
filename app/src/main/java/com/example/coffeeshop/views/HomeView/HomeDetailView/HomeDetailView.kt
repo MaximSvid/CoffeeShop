@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.example.coffeeshop.views.HomeView.HomeDetailView.DetailSubViews.DetailDescriptionView
 import com.example.coffeeshop.views.HomeView.HomeDetailView.DetailSubViews.ImageDetailView
 
 @Composable
@@ -19,7 +20,12 @@ fun HomeDetailView(
     productId: String,
     imageUrl: String,
     name: String,
-    onBackClick: () -> Unit= {}
+    onBackClick: () -> Unit= {},
+    productDescription: String,
+    price: Double,
+    region: String,
+    roastLevel: Int
+//    gridOptions: List<String>
 ) {
 
     Log.d("HomeDetailView", "ProductId: $productId, ImageUrl: $imageUrl, Name: $name")
@@ -43,6 +49,15 @@ fun HomeDetailView(
         ImageDetailView(imageUrl = imageUrl) {
             //обработчик нажатия на "лайк"
         }
+
+        DetailDescriptionView(
+            name = name,
+            description = productDescription,
+            price = price,
+            region = region,
+            roastLevel = roastLevel,
+//            gridOptions = gridOptions
+        )
     }
 
 }

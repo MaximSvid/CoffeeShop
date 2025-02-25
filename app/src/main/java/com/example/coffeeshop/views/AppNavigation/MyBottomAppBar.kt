@@ -123,6 +123,22 @@ fun MyBottomAppBar() {
                     navArgument("name") {
                         type = NavType.StringType
                         nullable = true
+                    },
+                    navArgument("productDescription") {
+                        type = NavType.StringType
+                        nullable = true
+                    },
+                    navArgument("price") {
+                        type = NavType.StringType
+                        nullable = true
+                    },
+                    navArgument("region") {
+                        type = NavType.StringType
+                        nullable = true
+                    },
+                    navArgument("roastLevel") {
+                        type = NavType.StringType
+                        nullable = true
                     }
                 )
             ) {
@@ -130,12 +146,22 @@ fun MyBottomAppBar() {
                 val productId = navBackStackEntry.arguments?.getString("productId") ?: ""
                 val imageUrl = navBackStackEntry.arguments?.getString("imageUrl") ?: ""
                 val name = navBackStackEntry.arguments?.getString("name") ?: ""
+                val productDescription = navBackStackEntry.arguments?.getString("productDescription") ?: ""
+                val price = navBackStackEntry.arguments?.getString("price")?.toDoubleOrNull() ?: 0.0
+                val region = navBackStackEntry.arguments?.getString("region") ?: ""
+                val roastLevel = navBackStackEntry.arguments?.getString("roastLevel")?.toIntOrNull() ?: 0
+                val gridOptions = navBackStackEntry.arguments?.getString("gridOptions") ?: "[]"
 
                 HomeDetailView(
                     productId = productId,
                     imageUrl = imageUrl,
                     name = name,
-                    onBackClick = {navigationController.navigateUp()}
+                    onBackClick = {navigationController.navigateUp()},
+                    productDescription = productDescription,
+                    price = price,
+                    region = region,
+                    roastLevel = roastLevel
+//                    gridOptions = gridOptions
                 )
             }
         }

@@ -17,19 +17,17 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.focus.focusModifier
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 
 @SuppressLint("DefaultLocale")
 @Composable
 fun DetailDescriptionView (
     name: String,
-    productDescription: String,
+    description: String,
     price: Double,
     region: String,
     roastLevel: Int,
-    gridOptions: List<String>,
+//    gridOptions: List<String>,
     modifier: Modifier = Modifier
 
 ) {
@@ -44,14 +42,14 @@ fun DetailDescriptionView (
         ){
             Text(
                 text = name,
-                style = MaterialTheme.typography.headlineMedium,
+                style = MaterialTheme.typography.bodyMedium,
                 modifier = Modifier
                     .weight(1f)
             )
 
             Text(
                 text = "$${String.format("%.2f", price)}",
-                style = MaterialTheme.typography.headlineLarge
+                style = MaterialTheme.typography.bodyLarge
             )
 
         }
@@ -70,10 +68,15 @@ fun DetailDescriptionView (
                     modifier = Modifier.size(18.dp)
                 )
                 Spacer(modifier = Modifier.width(4.dp))
-                Text(
-                    text = region,
-                    style = MaterialTheme.typography.headlineSmall
-                )
+                if (region.isNotEmpty()) {
+                    Text(
+                        text = region,
+                        style = MaterialTheme.typography.bodyMedium
+                    )
+                } else {
+                    Text(text = "detected...")
+                }
+
             }
         }
         
@@ -85,7 +88,7 @@ fun DetailDescriptionView (
         }
 
         Text(
-            text = productDescription,
+            text = description,
             style = MaterialTheme.typography.bodyMedium
         )
     }
