@@ -156,11 +156,13 @@ fun MyBottomAppBar() {
                     productId = productId,
                     imageUrl = imageUrl,
                     name = name,
-                    onBackClick = {navigationController.navigateUp()},
+//                    onBackClick = {navigationController.navigateUp()},
                     productDescription = productDescription,
                     price = price,
                     region = region,
-                    roastLevel = roastLevel
+                    roastLevel = roastLevel,
+                    isLiked = false,
+                    navController =  navigationController
 //                    gridOptions = gridOptions
                 )
             }

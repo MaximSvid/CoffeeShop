@@ -20,8 +20,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.example.coffeeshop.ui.theme.BrownJC
 
 @SuppressLint("DefaultLocale")
 @Composable
@@ -58,6 +60,7 @@ fun DetailDescriptionView (
                 text = "$${String.format("%.2f", price)}",
                 style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.Bold,
+//                color = BrownJC
                 color = MaterialTheme.colorScheme.primary
             )
         }
@@ -73,6 +76,7 @@ fun DetailDescriptionView (
                 imageVector = Icons.Default.LocationOn,
                 contentDescription = "Region",
                 modifier = Modifier.size(18.dp),
+//                tint = BrownJC
                 tint = MaterialTheme.colorScheme.primary
             )
             Spacer(modifier = Modifier.width(4.dp))
