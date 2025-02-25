@@ -29,6 +29,7 @@ fun HomeDetailView(
 ) {
 
     Log.d("HomeDetailView", "ProductId: $productId, ImageUrl: $imageUrl, Name: $name")
+    Log.d("HomeDetailView", "Description: $productDescription, Price: $price, Region: $region, RoastLevel: $roastLevel")
     
     Column (
         modifier = Modifier
@@ -59,5 +60,4 @@ fun HomeDetailView(
 //            gridOptions = gridOptions
         )
     }
-
 }

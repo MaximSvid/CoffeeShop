@@ -2,14 +2,11 @@ package com.example.coffeeshop.views.HomeView
 
 import android.net.Uri
 import android.util.Log
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -24,7 +21,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import com.example.coffeeshop.viewModels.CoffeeProductViewModel
 import com.example.coffeeshop.views.HomeView.SubView.ImageSlider
 import com.example.coffeeshop.views.HomeView.SubView.ProductCard
@@ -86,10 +82,14 @@ fun Home(
                             modifier = Modifier
                                 .weight(1f)
                                 .heightIn(min = 200.dp),  // Фиксированная минимальная высота
-                                    onClick = {
+                            onClick = {
                                 val route = "productDetail/${product.id}" +
                                         "?imageUrl=${Uri.encode(product.imageUrl)}" +
-                                        "&name=${Uri.encode(product.name)}"
+                                        "&name=${Uri.encode(product.name)}" +
+                                        "&productDescription=${Uri.encode(product.description)}" +
+                                        "&price=${product.price}" +
+                                        "&region=${Uri.encode(product.region)}" +
+                                        "&roastLevel=${product.roastLevel}"
                                 Log.d("Navigation", "Navigating to: $route")
                                 navController.navigate(route)
                             }

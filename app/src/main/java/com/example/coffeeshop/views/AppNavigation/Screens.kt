@@ -6,6 +6,6 @@ sealed class Screens (val screens: String) {
     data object FavoriteView: Screens("favorite")
     data object SettingsView: Screens("settings")
 
-    data object ProductDetailView: Screens("productDetail/{productId}?imageUrl={imageUrl}&name={name}")
+    data object ProductDetailView: Screens( "productDetail/{productId}?imageUrl={imageUrl}&name={name}&productDescription={productDescription}&price={price}&region={region}&roastLevel={roastLevel}")
 }
 
