@@ -1,5 +1,8 @@
 package com.example.coffeeshop.views.HomeView
 
+import android.net.Uri
+import android.util.Log
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -29,14 +32,13 @@ import com.example.coffeeshop.views.HomeView.SubView.Search
 
 @Composable
 fun Home(
-    navController: NavController = rememberNavController(),
+    navController: NavController,
     viewModel: CoffeeProductViewModel = hiltViewModel()
 ) {
     val products by viewModel.products.collectAsState(emptyList())
     val searchState by viewModel.searchState.collectAsState()
 
     Column(modifier = Modifier.fillMaxSize()) {
-        // Поиск и сортировка в отдельной колонке с фиксированной позицией
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -83,7 +85,14 @@ fun Home(
                             onLikeClick = { /*TODO*/ },
                             modifier = Modifier
                                 .weight(1f)
-                                .heightIn(min = 200.dp)  // Фиксированная минимальная высота
+                                .heightIn(min = 200.dp),  // Фиксированная минимальная высота
+                                    onClick = {
+                                val route = "productDetail/${product.id}" +
+                                        "?imageUrl=${Uri.encode(product.imageUrl)}" +
+                                        "&name=${Uri.encode(product.name)}"
+                                Log.d("Navigation", "Navigating to: $route")
+                                navController.navigate(route)
+                            }
                         )
                     }
                     if (rowProducts.size == 1) {

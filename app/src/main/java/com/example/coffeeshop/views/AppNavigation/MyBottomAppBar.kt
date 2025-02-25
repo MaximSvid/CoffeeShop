@@ -18,14 +18,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.coffeeshop.ui.theme.BrownJC
 import com.example.coffeeshop.ui.theme.CoffeeShopTheme
 import com.example.coffeeshop.views.Cart
 import com.example.coffeeshop.views.Favorite
 import com.example.coffeeshop.views.HomeView.Home
+import com.example.coffeeshop.views.HomeView.HomeDetailView.HomeDetailView
 import com.example.coffeeshop.views.Settings
 
 @Composable
@@ -108,6 +111,33 @@ fun MyBottomAppBar() {
             composable(Screens.CartView.screens) { Cart() }
             composable(Screens.FavoriteView.screens) { Favorite() }
             composable(Screens.SettingsView.screens) { Settings() }
+
+            composable(
+                route = Screens.ProductDetailView.screens,
+                arguments = listOf(
+                    navArgument("productId") {type = NavType.StringType},
+                    navArgument("imageUrl") {
+                        type = NavType.StringType
+                        nullable = true
+                    },
+                    navArgument("name") {
+                        type = NavType.StringType
+                        nullable = true
+                    }
+                )
+            ) {
+                navBackStackEntry ->
+                val productId = navBackStackEntry.arguments?.getString("productId") ?: ""
+                val imageUrl = navBackStackEntry.arguments?.getString("imageUrl") ?: ""
+                val name = navBackStackEntry.arguments?.getString("name") ?: ""
+
+                HomeDetailView(
+                    productId = productId,
+                    imageUrl = imageUrl,
+                    name = name,
+                    onBackClick = {navigationController.navigateUp()}
+                )
+            }
         }
     }
 }
