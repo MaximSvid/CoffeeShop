@@ -5,6 +5,7 @@ import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.icons.Icons
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
@@ -13,6 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.coffeeshop.views.HomeView.HomeDetailView.DetailSubViews.ButtonsDetailView
 import com.example.coffeeshop.views.HomeView.HomeDetailView.DetailSubViews.DetailDescriptionView
 import com.example.coffeeshop.views.HomeView.HomeDetailView.DetailSubViews.ImageDetailView
 
@@ -54,5 +56,6 @@ fun HomeDetailView(
             roastLevel = roastLevel,
 //            gridOptions = gridOptions
         )
+
     }
 }

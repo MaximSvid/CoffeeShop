@@ -150,5 +150,14 @@ fun DetailDescriptionView (
             text = description,
             style = MaterialTheme.typography.bodyMedium
         )
+
+        Spacer(modifier = Modifier.weight(1f))
+
+        ButtonsDetailView(
+            onClickBuyNow = { /*TODO*/ },
+            onClickCart = { /*TODO*/ },
+            modifier = Modifier
+                .padding(bottom = 8.dp)
+        )
     }
 }
