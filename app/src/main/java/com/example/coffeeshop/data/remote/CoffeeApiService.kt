@@ -1,7 +1,7 @@
 package com.example.coffeeshop.data.remote
 
 import com.example.coffeeshop.data.model.Product
-import com.example.coffeeshop.repositories.CoffeeApiRepository
+import com.example.coffeeshop.repositories.CoffeeApiRepo.CoffeeApiRepository
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module

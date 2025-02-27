@@ -1,8 +1,9 @@
-package com.example.coffeeshop.repositories
+package com.example.coffeeshop.repositories.CoffeeApiRepo
 
 import android.util.Log
 import com.example.coffeeshop.data.model.Product
 import com.example.coffeeshop.data.remote.CoffeeApiService
+import com.example.coffeeshop.repositories.CoffeeApiRepo.CoffeeApiRepository
 import javax.inject.Inject
 import javax.inject.Singleton
 

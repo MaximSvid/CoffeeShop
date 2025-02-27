@@ -3,6 +3,8 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.ksp)
     alias(libs.plugins.hilt)
+
+//    alias(libs.plugins.room)
 }
 
 hilt {
@@ -13,6 +15,8 @@ ksp {
     arg("compose-compiler-kotlin", "enableKspPreview=true")
     arg("compose-compiler-kotlin", "skipMetadataVersionCheck=true")
 }
+
+
 
 android {
     namespace = "com.example.coffeeshop"
@@ -116,4 +120,11 @@ dependencies {
 
     //coli image
     implementation("io.coil-kt:coil-compose:2.3.0")
+
+    //database room (SQLite)
+    implementation(libs.androidx.room.runtime)
+    ksp(libs.androidx.room.compiler)  // Используем KSP вместо kapt
+    implementation(libs.androidx.room.ktx)
+
+
 }

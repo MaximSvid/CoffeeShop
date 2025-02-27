@@ -52,7 +52,8 @@ fun ProductCard(
     price: String,
     onLikeClick: () -> Unit,
     modifier: Modifier = Modifier,
-    onClick: () -> Unit = {}
+    onClick: () -> Unit = {},
+//    isLiked: Boolean
 ) {
     Card(
         modifier = modifier
@@ -69,6 +70,21 @@ fun ProductCard(
                 alignment = Alignment.Center,
                 contentScale = ContentScale.Crop
             )
+
+            IconButton(
+                onClick = {  },
+                modifier = Modifier.align(Alignment.TopEnd)
+            ) {
+                Icon(
+                    imageVector = if (true) {
+                        Icons.Filled.Favorite
+                    } else {
+                        Icons.Default.FavoriteBorder
+                    },
+                    contentDescription = if (false) "Unlike" else "Like",
+                    tint = Color.Red
+                )
+            }
 
             // Градиент затемнения для текста
             Box(

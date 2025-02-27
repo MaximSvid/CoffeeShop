@@ -1,6 +1,5 @@
-package com.example.coffeeshop.repositories
+package com.example.coffeeshop.repositories.CoffeeApiRepo
 
-import com.example.coffeeshop.R
 import com.example.coffeeshop.data.model.Product
 
 class MockCoffeeRepo: CoffeeApiRepository {
